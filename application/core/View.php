@@ -2,10 +2,10 @@
 
 namespace application\core;
 
-	class View
+	 class View
 	{
-		public $path;						// маршрут действия нужного представления
-		public $layout = 'default.php';
+		protected $path;						// маршрут действия нужного представления
+		protected $layout = 'default.php';
 
 		function __construct($route)
 		{

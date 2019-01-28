@@ -6,7 +6,7 @@ use application\lib\Db;
 
 	abstract class Model
 	{
-		public $db;					// экмемпляр класса Db 
+		protected $db;					// экмемпляр класса Db 
 
 		function __construct()
 		{

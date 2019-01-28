@@ -6,8 +6,8 @@ use application\core\View;
 
 	abstract class Controller
 	{
-		public $view;		// Экземпляр представления
-		public $model;		// Экземпляр модели
+		protected $view;		// Экземпляр представления
+		protected $model;		// Экземпляр модели
 		
 		function __construct($route)
 		{
@@ -16,7 +16,7 @@ use application\core\View;
 			
 		}
 
-		public  function loadModel($name)							// МЕТОД для создания экземпляра модели
+		private  function loadModel($name)							// МЕТОД для создания экземпляра модели
 		{
 			$path ='application\models\\'.ucfirst($name);			// пусть к модели
 			if(class_exists($path)) {
