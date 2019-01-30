@@ -10,7 +10,7 @@
 	    </li>
 	    <li class="list-group-item">
 	    	<div class="input-group">
-	  			<input type="text" name="name_search_value" class="form-control" placeholder="Film name">
+	  			<input type="text" name="name_search_value" id="name_search_value" class="form-control" placeholder="Film name">
 	 			<div class="input-group-append">
 					<input name="name_search" class="btn btn-primary" type="submit" value="Search">
 				</div>
@@ -18,7 +18,7 @@
 	    </li>
 	    <li class="list-group-item">
 	    	<div class="input-group">
-	  			<input type="text" name="actor_search_value" class="form-control" placeholder="Actor name">
+	  			<input type="text" name="actor_search_value" id="actor_search_value"  class="form-control" placeholder="Actor name">
 	 			<div class="input-group-append">
 					<input name="actor_search" class="btn btn-primary" type="submit" value="Search">
 				</div>

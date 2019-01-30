@@ -38,7 +38,8 @@ namespace application\core;
 
 		public function redirect($url)		// МЕТОД для перенаправления
 		{
-			header('location: '.$url);
+			header("Cache-Control: no-store,no-cache,mustrevalidate");
+			header("location: ".$url);
 			exit;
 		}
 

@@ -9,7 +9,7 @@
 	    		<input type="text" name="name" class="form-control" placeholder="Name">
 	    	</div>
 	    	<div class="col-2">
-	     		<input type="number" name="year" class="form-control" min="1895" max="<? echo date("Y");?>" placeholder="Year">
+	     		<input type="number" name="year" class="form-control" min="1895" max="<?php echo date("Y");?>" placeholder="Year">
 	    	</div>
 	    	<div class="col-2">
 	    		<input type="text" name="format" class="form-control" placeholder="Format">

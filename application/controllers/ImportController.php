@@ -13,7 +13,7 @@ use application\core\Controller;
 
 			if ( isset( $_POST['import'] ) )				// ждем нажатия кнопки Import
 			{
-				if(isset($_FILES["import_file"]["tmp_name"])) {
+				if($_FILES["import_file"]["tmp_name"]!="") {
 					$this->model->Import($_FILES["import_file"]["tmp_name"]);	// вызов фунцкции модели Import
 					$this->view->redirect("/");									// перенаправление на главную (/)
 				}

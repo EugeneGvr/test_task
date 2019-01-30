@@ -6,21 +6,19 @@ use application\core\Controller;
 
 	class MainController extends Controller
 	{
-		
+		protected $params;
+
 		public function indexAction() 										// ДЕЙСТВИЕ страницы index.php
 		{
-			if ( !isset( $_POST['sort'] ) && !isset( $_POST['name_search'] ) && !isset( $_POST['actor_search'] ) )
-			{
-				$result=$this->model->getFilms(); 									// получение всех фиьмов
-				$params = [
-					'films' => $result,
-				];																	// параметры для передачи в представление
-				$this->view->render('Main page',$params);							// рендерим представление с Title: Main page
-			}
+			$result=$this->model->getFilms(); 									// получение всех фильмов
+			$this->params = [
+				'films' => $result,
+			];																	// параметры для передачи в представление
 
 			foreach ($result as $key => $val) {
 				if ( isset( $_POST["open_".$val['id']] ) )							// ждем нажатия кнопки Open
 				{
+
 					$this->view->redirect("/films/".$val['id']);					// перенаправляем на личную страницу конкретной карты
 				}
 			}
@@ -41,8 +39,7 @@ use application\core\Controller;
 			if ( isset( $_POST['sort'] ) )											// ждем нажатия кнопки Sort
 			{
 				$sorted_result=$this->model->Sort();								// получаем отсортированные данные
-				$sorted_params = [ 'films' => $sorted_result, ];
-				$this->view->render('Main page',$sorted_params);					// рендерим представление с Title: Main page
+				$this->params = [ 'films' => $sorted_result, ];
 			}
 
 			if ( isset( $_POST['import'] ) )										// ждем нажатия кнопки Import
@@ -53,15 +50,14 @@ use application\core\Controller;
 			if ( isset( $_POST['name_search'] ) )													// ждем нажатия кнопки Search
 			{
 				$name_search_result=$this->model->nameSearch($_POST['name_search_value']);
-				$name_search_params = [ 'films' => $name_search_result, ];
-				$this->view->render('Main page',$name_search_params);
+				$this->params = [ 'films' => $name_search_result, ];
 			}
 
 			if ( isset( $_POST['actor_search'] ) )													// ждем нажатия кнопки Search
 			{
 				$actor_search_result=$this->model->actorSearch($_POST['actor_search_value']);		
-				$actor_search_params = [ 'films' => $actor_search_result, ];
-				$this->view->render('Main page',$actor_search_params);
+				$this->params = [ 'films' => $actor_search_result, ];
 			}
+			$this->view->render('Main page',$this->params);								// рендерим представление с Title: Main page
 		} 
 	}
